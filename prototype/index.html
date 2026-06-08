@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SlotCat.ai Prototype</title>
+    <link rel="stylesheet" href="./styles.css?v=slotcat-lighter-form-type" />
+  </head>
+  <body>
+    <main>
+      <section class="view landing-view" id="landing-view">
+        <div class="landing-shell">
+          <nav class="landing-nav">
+            <span class="wordmark">SlotCat.ai</span>
+            <button class="ghost-button small" id="sample-button" type="button">Sign in</button>
+          </nav>
+
+          <div class="landing-geometry" aria-hidden="true">
+            <div class="hero-arc hero-arc-one"></div>
+            <div class="hero-arc hero-arc-two"></div>
+            <div class="hero-arc hero-arc-three"></div>
+            <div class="hero-line hero-line-one"></div>
+            <div class="hero-line hero-line-two"></div>
+            <div class="hero-line hero-line-three"></div>
+            <div class="hero-anchor"></div>
+            <div class="hero-ripple hero-ripple-one"></div>
+            <div class="hero-ripple hero-ripple-two"></div>
+          </div>
+
+          <header class="landing-copy">
+            <div class="hero-logo-window" aria-label="SlotCat.ai">
+              <img class="hero-image-logo" src="./assets/slotcat-hero-logo.png" alt="SlotCat.ai" />
+            </div>
+            <div class="hero-divider" aria-hidden="true"><span>✦</span></div>
+            <p class="slogan">Find the Best Meeting Time Across Time Zones</p>
+          </header>
+
+          <div class="landing-map" aria-hidden="true">
+            <div class="map-dots map-americas"></div>
+            <div class="map-dots map-europe"></div>
+            <div class="map-dots map-asia"></div>
+            <div class="route route-one"></div>
+            <div class="route route-two"></div>
+            <div class="route route-three"></div>
+            <span class="map-pin pin-one">♥</span>
+            <span class="map-pin pin-two">♥</span>
+            <span class="map-pin pin-three">♥</span>
+            <div class="time-bubble bubble-beijing"><strong>Beijing</strong><span>9:00 AM</span></div>
+            <div class="time-bubble bubble-new-york"><strong>US Eastern</strong><span>7:00 PM</span></div>
+            <div class="time-bubble bubble-london"><strong>London</strong><span>1:00 AM</span></div>
+            <div class="time-bubble bubble-san-francisco"><strong>San Francisco</strong><span>4:00 PM</span></div>
+          </div>
+
+          <form class="request-dialog" id="request-form">
+            <label for="meeting-request"><span aria-hidden="true">🐾</span> Tell the cat your meeting request.</label>
+            <textarea id="meeting-request" aria-label="Tell the cat your meeting request">Plan 3 monthly meetings for teams in Beijing, US Eastern, UK, and US Pacific.
+Rotate off-hours fairly.</textarea>
+            <div class="dialog-actions">
+              <button class="primary-button" type="submit">Ask SlotCat</button>
+              <span>SlotCat rotates off-hours across global teams.</span>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="view loading-view hidden" id="loading-view" aria-live="polite">
+        <div class="loading-card">
+          <img class="title-cat image-cat loading-title-cat" src="./assets/slotcat-small-logo.png" alt="" aria-hidden="true" />
+          <div class="loading-ripple"></div>
+          <p>loading...</p>
+        </div>
+      </section>
+
+      <section class="view results-view hidden" id="results-view">
+        <div class="shell">
+          <header class="topbar">
+            <div>
+              <div class="logo-crop topbar-logo-crop" aria-label="SlotCat.ai">
+                <img class="brand-logo topbar-logo" src="./assets/slotcat-logo.png" alt="" />
+              </div>
+            </div>
+            <button class="ghost-button" id="back-button" type="button">New request</button>
+          </header>
+
+          <section class="setup-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Your Meeting Request</h2>
+              </div>
+              <button class="ghost-button small" id="edit-setup-button" type="button">Edit setup</button>
+            </div>
+            <div class="chips" id="setup-summary">
+              <span id="summary-cadence">3 recurring meetings</span>
+              <span id="summary-duration">60 minutes</span>
+              <span id="summary-hours">9:00-18:00 local work hours</span>
+              <span id="summary-fairness">Rotate burden fairly</span>
+              <span id="summary-guardrail">No 00:00-07:00 by default</span>
+            </div>
+            <div class="setup-editor hidden" id="setup-editor">
+              <label>
+                Meetings
+                <input id="meeting-count-input" min="1" type="number" value="3" />
+              </label>
+              <label>
+                Frequency
+                <select id="frequency-input">
+                  <option value="one-time">One-time</option>
+                  <option value="recurring" selected>Recurring</option>
+                </select>
+              </label>
+              <label>
+                Duration
+                <select id="duration-input">
+                  <option value="30">30 minutes</option>
+                  <option value="60" selected>60 minutes</option>
+                  <option value="90">90 minutes</option>
+                </select>
+              </label>
+              <label>
+                Work hours
+                <input id="hours-input" type="text" value="9:00-18:00" />
+              </label>
+              <label>
+                Favor location
+                <select id="favored-location-input">
+                  <option value="rotate" selected>Rotate burden fairly</option>
+                  <option value="balanced">No preference · best for everyone</option>
+                  <option value="Beijing">Beijing</option>
+                  <option value="US Eastern">US Eastern</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="US Pacific">US Pacific</option>
+                </select>
+              </label>
+              <label class="location-prompt-label">
+                Tell the cat where people are
+                <textarea id="location-prompt-input" rows="2">Beijing, US Eastern, UK, US Pacific</textarea>
+              </label>
+              <button class="location-update-button" id="location-update-button" type="button">Update locations</button>
+            </div>
+            <div class="locations" id="locations-list">
+              <div><strong>China</strong></div>
+              <div><strong>US Eastern</strong></div>
+              <div><strong>United Kingdom</strong></div>
+              <div><strong>US Pacific</strong></div>
+            </div>
+          </section>
+
+          <section class="recommendations">
+            <div class="section-heading">
+              <div>
+                <h2 id="recommendation-title">A bookable window you can verify on calendar.</h2>
+              </div>
+              <span class="timezone-note" id="user-timezone-label">Shown in your local time</span>
+            </div>
+
+            <div class="recommendation-layout">
+              <div class="window-list" id="window-list"></div>
+              <div class="schedule-table" id="schedule-table" role="table" aria-label="Recommended meeting schedule"></div>
+            </div>
+            <div class="rec-cat-note" aria-hidden="true">
+              <span class="rec-cat-crop"><img class="rec-cat" src="./assets/slotcat-cat.png" alt="" /></span>
+              <span class="rec-spark">✦</span>
+              <span class="rec-bubble">Fair meetings.<br />Happy teams.</span>
+            </div>
+            <div class="recommendation-actions">
+              <button class="copy-plan-button" id="copy-plan-button" type="button">Copy Plan</button>
+            </div>
+          </section>
+
+          <article class="ribbon-panel">
+            <div class="section-heading">
+              <div>
+                <h2 id="ribbon-title">Explore more options? Drag me!</h2>
+                <p class="lens-time" id="scrubber-time-label">12:00 (your time)</p>
+              </div>
+            </div>
+
+            <div class="scrubber-hint" aria-hidden="true">
+              <span>🐱 Drag me!</span>
+            </div>
+            <div class="scrubber-control">
+              <input id="time-scrubber" max="1440" min="0" step="30" type="range" value="720" />
+              <span class="scrubber-face" id="scrubber-face" data-mood="work" style="left: 50%"></span>
+            </div>
+            <div class="scrubber-ticks" id="scrubber-ticks" aria-hidden="true"></div>
+            <div class="ribbon-list" id="ribbon-list"></div>
+            <div class="scrubber-footer" aria-hidden="true">
+              <div class="scrubber-legend">
+                <span><i class="legend-dot early-dot"></i><strong>Early morning</strong><small>Too early for some</small></span>
+                <span><i class="legend-dot work-dot"></i><strong>Working hours</strong><small>Ideal &amp; productive</small></span>
+                <span><i class="legend-dot late-dot"></i><strong>Late night</strong><small>Off hours/Late night</small></span>
+                <span><i class="legend-dot sleep-dot"></i><strong>Sleep time</strong><small>00:00-07:00</small></span>
+              </div>
+              <aside class="scrubber-tip">
+                <strong>💡 Tip</strong>
+                <span>Drag the timeline to find the fairest time for everyone.</span>
+              </aside>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script src="./app.js?v=slotcat-clear-sample-prompt"></script>
+  </body>
+</html>
