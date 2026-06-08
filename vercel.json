@@ -1,0 +1,21 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/prototype/index.html"
+    },
+    {
+      "source": "/styles.css",
+      "destination": "/prototype/styles.css"
+    },
+    {
+      "source": "/app.js",
+      "destination": "/prototype/app.js"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "/prototype/assets/:path*"
+    }
+  ]
+}
