@@ -118,13 +118,13 @@ let currentLocations = [
 ];
 
 const knownLocations = [
-  { patterns: ["new york", "nyc", "us eastern", "eastern time", "east coast", "est", "edt", "美东", "纽约"], label: "US Eastern", timezone: "America/New_York" },
+  { patterns: ["new york", "nyc", "us eastern", "us east", "east us", "eastern us", "eastern time", "east coast", "est", "edt", "美东", "纽约"], label: "US Eastern", timezone: "America/New_York" },
   { patterns: ["washington dc", "washington d.c.", "boston", "atlanta", "miami", "orlando", "philadelphia", "pittsburgh", "detroit", "charlotte", "raleigh", "durham", "durham nc", "chapel hill", "north carolina", "nc", "toronto", "montreal"], label: "US Eastern", timezone: "America/New_York" },
-  { patterns: ["chicago", "us central", "central time", "cst", "cdt", "芝加哥", "美中"], label: "US Central", timezone: "America/Chicago" },
+  { patterns: ["chicago", "us central", "central us", "central time", "cst", "cdt", "芝加哥", "美中"], label: "US Central", timezone: "America/Chicago" },
   { patterns: ["dallas", "austin", "houston", "minneapolis", "nashville", "new orleans", "st louis", "kansas city"], label: "US Central", timezone: "America/Chicago" },
   { patterns: ["mexico city", "mexico"], label: "Mexico", timezone: "America/Mexico_City" },
-  { patterns: ["denver", "salt lake city", "phoenix", "boise", "us mountain", "mountain time", "mst", "mdt"], label: "US Mountain", timezone: "America/Denver" },
-  { patterns: ["san francisco", "sf", "los angeles", "la", "seattle", "portland", "san diego", "san jose", "vancouver", "us pacific", "pacific time", "west coast", "pst", "pdt", "美西", "旧金山", "洛杉矶", "西雅图"], label: "US Pacific", timezone: "America/Los_Angeles" },
+  { patterns: ["denver", "salt lake city", "phoenix", "boise", "us mountain", "mountain us", "mountain time", "mst", "mdt"], label: "US Mountain", timezone: "America/Denver" },
+  { patterns: ["san francisco", "sf", "los angeles", "la", "seattle", "portland", "san diego", "san jose", "vancouver", "us pacific", "us west", "west us", "western us", "pacific us", "pacific time", "west coast", "pst", "pdt", "美西", "旧金山", "洛杉矶", "西雅图"], label: "US Pacific", timezone: "America/Los_Angeles" },
   { patterns: ["london", "uk", "united kingdom", "英国", "伦敦"], label: "United Kingdom", timezone: "Europe/London" },
   { patterns: ["dublin", "ireland"], label: "Ireland", timezone: "Europe/Dublin" },
   { patterns: ["paris", "france", "法国", "巴黎"], label: "France", timezone: "Europe/Paris" },
@@ -232,13 +232,24 @@ function escapeRegExp(value) {
 }
 
 function matchesLocationPattern(normalizedPrompt, pattern) {
-  const normalizedPattern = pattern.toLowerCase();
+  const normalizedPattern = normalizeLocationText(pattern);
+  const normalizedLocationPrompt = normalizeLocationText(normalizedPrompt);
 
   if (/[\u4e00-\u9fff]/.test(normalizedPattern)) {
     return normalizedPrompt.includes(normalizedPattern);
   }
 
-  return new RegExp(`(^|[^a-z0-9])${escapeRegExp(normalizedPattern)}([^a-z0-9]|$)`).test(normalizedPrompt);
+  return new RegExp(`(^|[^a-z0-9])${escapeRegExp(normalizedPattern)}([^a-z0-9]|$)`).test(normalizedLocationPrompt);
+}
+
+function normalizeLocationText(value) {
+  return value
+    .toLowerCase()
+    .replace(/\bu\.?\s*s\.?(?=\W|$)/g, "us")
+    .replace(/\bunited states\b/g, "us")
+    .replace(/[-_/]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function renderLocations(locations) {
