@@ -2393,3 +2393,402 @@ textarea {
     grid-column: auto;
   }
 }
+
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .view {
+    min-height: 100dvh;
+  }
+
+  .shell,
+  .results-view .shell {
+    width: min(100%, calc(100% - 20px));
+    padding: 14px 0 36px;
+  }
+
+  .landing-shell {
+    width: min(100%, calc(100% - 20px));
+    min-height: 100dvh;
+    padding: 14px 0 16px;
+  }
+
+  .landing-nav .ghost-button {
+    min-height: 38px;
+    padding: 0 16px;
+    font-size: 13px;
+  }
+
+  .wordmark {
+    font-size: 17px;
+  }
+
+  .landing-copy {
+    padding-top: 18px;
+  }
+
+  .hero-logo-window {
+    width: min(100%, 360px);
+    height: clamp(66px, 22vw, 88px);
+    margin-bottom: -6px;
+  }
+
+  .hero-image-logo {
+    width: min(100%, 360px);
+  }
+
+  .hero-divider {
+    margin: 6px auto 8px;
+    font-size: 18px;
+  }
+
+  .hero-divider::before,
+  .hero-divider::after {
+    width: 46px;
+  }
+
+  .slogan {
+    font-size: clamp(16px, 5.5vw, 21px);
+    line-height: 1.2;
+    padding-inline: 8px;
+  }
+
+  .landing-map {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    height: 176px;
+    min-height: 176px;
+    margin: 4px auto 0;
+    transform: none;
+    opacity: 0.52;
+  }
+
+  .time-bubble {
+    transform: scale(0.72);
+    transform-origin: center;
+  }
+
+  .bubble-beijing {
+    left: 2%;
+    top: 36%;
+  }
+
+  .bubble-new-york {
+    right: -8%;
+    top: 34%;
+  }
+
+  .bubble-london {
+    left: -8%;
+    bottom: 8%;
+  }
+
+  .bubble-san-francisco {
+    right: -9%;
+    bottom: -6%;
+  }
+
+  .request-dialog {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    margin-top: 12px;
+    border-radius: 20px;
+    padding: 12px;
+  }
+
+  .request-dialog label {
+    margin: 0 4px 8px;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
+  .request-dialog textarea {
+    height: 116px;
+    min-height: 116px;
+    border-radius: 14px;
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .dialog-actions {
+    gap: 9px;
+    margin-top: 10px;
+  }
+
+  .dialog-actions > span {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .request-dialog .primary-button {
+    width: 100%;
+    min-height: 42px;
+  }
+
+  .results-view .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .results-view .topbar-logo-crop {
+    width: 152px;
+  }
+
+  .results-view .topbar .ghost-button {
+    min-height: 42px;
+    margin-top: 0;
+    border-radius: 14px;
+    padding: 0 14px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .results-view .topbar .ghost-button::before {
+    margin-right: 6px;
+  }
+
+  .setup-panel,
+  .recommendations,
+  .ribbon-panel {
+    border-radius: 20px;
+    padding: 18px 14px;
+    margin-bottom: 14px;
+  }
+
+  .setup-panel .section-heading,
+  .recommendations .section-heading,
+  .section-heading {
+    display: grid;
+    gap: 12px;
+  }
+
+  .setup-panel h2,
+  .recommendations h2 {
+    align-items: flex-start;
+    font-size: 18px;
+    line-height: 1.15;
+  }
+
+  #edit-setup-button {
+    width: 100%;
+    min-height: 44px;
+    border-radius: 14px;
+  }
+
+  .chips {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .chips span {
+    justify-content: flex-start;
+    width: 100%;
+    border-radius: 14px;
+    padding: 9px 12px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .locations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .locations div {
+    min-width: 0;
+    padding: 9px 10px;
+  }
+
+  .locations strong {
+    font-size: 13px;
+  }
+
+  .setup-editor {
+    grid-template-columns: 1fr;
+    border-radius: 14px;
+    padding: 12px;
+  }
+
+  .location-update-button {
+    width: 100%;
+  }
+
+  .recommendations .timezone-note {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .recommendation-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .window-card {
+    grid-template-columns: 40px 1fr;
+    gap: 10px;
+    min-height: 0;
+    border-radius: 14px;
+    padding: 11px 12px;
+  }
+
+  .session-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .window-card-main > strong {
+    font-size: 18px;
+  }
+
+  .burden-tags {
+    grid-column: 1 / -1;
+  }
+
+  .burden-tag {
+    font-size: 10px;
+  }
+
+  .schedule-table {
+    border-radius: 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .schedule-row {
+    min-width: 720px;
+    min-height: 52px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .location-time-pill {
+    min-width: 66px;
+    padding: 5px 9px;
+    font-size: 12px;
+  }
+
+  .recommendation-actions {
+    position: static;
+    justify-content: stretch;
+    margin-top: 14px;
+  }
+
+  .copy-plan-button {
+    width: 100%;
+    min-height: 46px;
+    border-radius: 14px;
+    font-size: 14px;
+  }
+
+  .rec-cat-note {
+    min-height: 54px;
+    margin-top: 16px;
+  }
+
+  .rec-cat-crop {
+    width: 58px;
+    height: 52px;
+  }
+
+  .rec-cat {
+    width: 54px;
+  }
+
+  .rec-bubble {
+    border-radius: 12px;
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .ribbon-panel {
+    padding-bottom: 22px;
+  }
+
+  #ribbon-title {
+    font-size: 21px;
+  }
+
+  .lens-time {
+    font-size: 15px;
+  }
+
+  .scrubber-hint {
+    margin-top: 14px;
+  }
+
+  .scrubber-hint span {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+
+  .scrubber-ticks {
+    height: 20px;
+    font-size: 11px;
+  }
+
+  .ribbon-list {
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .ribbon-row {
+    gap: 8px;
+  }
+
+  .region {
+    grid-template-columns: 34px 1fr;
+    gap: 10px;
+  }
+
+  .region-flag {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  .region-copy > strong {
+    font-size: 14px;
+  }
+
+  .region-copy > span {
+    font-size: 12px;
+  }
+
+  .ribbon {
+    width: 100%;
+    height: 18px;
+  }
+
+  .scrubber-footer,
+  .scrubber-legend {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .scrubber-legend,
+  .scrubber-tip {
+    border-radius: 12px;
+    padding: 14px;
+  }
+
+  .scrubber-legend strong {
+    font-size: 13px;
+  }
+
+  .scrubber-legend small,
+  .scrubber-tip span {
+    font-size: 12px;
+  }
+}
