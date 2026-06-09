@@ -1,0 +1,14 @@
+{
+  "name": "slotcat-ai",
+  "version": "1.0.0",
+  "description": "Find the Best Meeting Time Across Time Zones",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site - no build needed'",
+    "lint": "echo 'No linter configured'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  }
+}
